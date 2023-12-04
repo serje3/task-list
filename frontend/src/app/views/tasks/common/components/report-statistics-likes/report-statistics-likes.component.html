@@ -1,0 +1,29 @@
+<div *ngIf="reportStatistics.statistics.last_in_progress_likes_scan.started_at as started; else succeedScan">
+  <p>
+    {{translate.scanStarted | translate}}
+    : {{started | date: 'd.MM H:mm'}}
+  </p>
+  <p>
+    {{translate.predictedFinish | translate}}
+    : {{reportStatistics.statistics.last_in_progress_likes_scan.predicted_finish | date: 'd.MM H:mm'}}
+  </p>
+</div>
+
+<ng-template #succeedScan>
+  <div
+    *ngIf="reportStatistics.statistics.last_success_scan.started_at as started">
+    <p>
+      {{translate.lastScan | translate}}
+      : {{started | date: 'd.MM H:mm'}}
+    </p>
+    <p>
+      Всего постов: {{reportStatistics.statistics.post_count}}
+    </p>
+    <p>
+      Количество постов в отчете: {{reportStatistics.statistics.report_post_count}}
+    </p>
+    <p>
+      Количество постов VIP участников: {{reportStatistics.statistics.vip_post_count}}
+    </p>
+  </div>
+</ng-template>

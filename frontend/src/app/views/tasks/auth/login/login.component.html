@@ -1,0 +1,30 @@
+<div class="auth-content mx-auto">
+  <div class="mb-5">
+    <h1 class="text-center mb-3"><i class="la la-fingerprint"></i></h1>
+    <h2 class="text-center mb-3">Вход</h2>
+    <p class="text-center mb-3">{{descriptionKey | translate}}
+      <a class="a-text-link" [routerLink]="Pages.signup">{{signInLabelKey | translate}}</a></p>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <div class="form-group mb-3">
+      <label class="form-label">{{usernameLabelKey | translate}}</label>
+      <input type="text" class="form-control" formControlName="username">
+    </div>
+    <div class="form-group mb-3">
+      <label class="form-label">{{passwordLabelKey | translate}}</label>
+      <input type="password" class="form-control" formControlName="password">
+    </div>
+
+    <div class="form-group pt-1 mb-3">
+      <button type="submit" class="btn btn-outline-info w-100">{{submitLabelKey | translate}}</button>
+    </div>
+    <div *ngIf="!((authService.logginError$ | async).hide)" class="form-group">
+      <alert type="danger">
+        <div>
+          <strong>{{(authService.logginError$ | async).name}}</strong> {{(authService.logginError$ | async).message}}
+        </div>
+      </alert>
+    </div>
+  </form>
+</div>
+

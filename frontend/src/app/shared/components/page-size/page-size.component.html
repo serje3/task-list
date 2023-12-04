@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-auto mt-2">
+    <span>Показывать</span></div>
+  <div class="col-auto">
+    <ng-select style="max-width: 130px"
+               [items]="sizesOfPage"
+               [(ngModel)]="pageService.itemsPerPage"
+               [openOnEnter]="false"
+               (open)="onOpen($event)"
+               [clearable]="false"
+               [searchable]="false"
+               (ngModelChange)="onChange.emit()"></ng-select>
+  </div>
+</div>

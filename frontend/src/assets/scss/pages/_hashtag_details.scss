@@ -1,0 +1,29 @@
+.hashtag-name {
+  &.link {
+    @include transition(color .15s ease-in-out);
+
+
+    &:hover {
+      color: $primary;
+      cursor: pointer;
+    }
+  }
+}
+
+.link-hover-primary {
+  @include transition(color .15s ease-in-out);
+
+  &:hover {
+    color: $primary;
+    cursor: pointer;
+  }
+}
+
+
+.hover-opacity {
+  @include transition(opacity .15s ease-in-out);
+}
+
+.hover-color {
+  @include transition(color .15s ease-in-out);
+}

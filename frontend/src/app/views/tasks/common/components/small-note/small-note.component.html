@@ -1,0 +1,60 @@
+<ng-container
+  *ngIf="note"
+  [ngSwitch]="note.mode"
+>
+  <ng-container *ngSwitchCase="Mode.VIEW">
+    <div class="text-break">
+      <ng-container [ngTemplateOutlet]="viewContent"></ng-container>
+    </div>
+  </ng-container>
+  <ng-container *ngSwitchCase="Mode.EDIT">
+    <div class="input-group mb-2">
+      <textarea class="form-control" rows="1" [(ngModel)]="note.content"
+                (keyup.enter)="onEditSubmit();switchMode()"></textarea>
+      <ng-container *ngIf="!isMobile">
+        <ng-container *ngTemplateOutlet="editContentBtn"></ng-container>
+      </ng-container>
+    </div>
+    <ng-container *ngIf="isMobile">
+      <div class="d-flex justify-content-center">
+        <ng-container *ngTemplateOutlet="editContentBtn"></ng-container>
+      </div>
+    </ng-container>
+  </ng-container>
+</ng-container>
+
+<ng-template #editContentBtn>
+  <button class="btn btn-outline-secondary" type="button" (click)="onEditSubmit();switchMode()">
+    <i class="feather icon-check"></i>
+  </button>
+</ng-template>
+
+<ng-template #viewContent>
+  <ng-container *ngIf="note.content as content">
+    <ng-container *ngIf="content.length <= 64 || showFullText">
+      <span (click)="switchMode()">{{content}}</span>
+      <ng-container *ngIf="content.length > 64">
+        <br/>
+        <span class="text-info cursor-pointer"
+              (click)="showFullText = false">
+                {{'PARTICIPANTS.DATATABLE.NOTE.HIDE' | translate}}
+        </span>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="content.length > 64 && !showFullText">
+      <span (click)="switchMode()">{{content.slice(0, 64)}}</span>
+      <span class="text-info px-2 cursor-pointer" (click)="showFullText = true">
+              {{'PARTICIPANTS.DATATABLE.NOTE.SHOW' | translate}}
+      </span>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="!note.content">
+    <div class="create-note hover-opacity" (click)="switchMode()">
+    <span class="text-info cursor-pointer create-note-btn w-100"
+    >
+      {{'PARTICIPANTS.DATATABLE.NOTE.CREATE' | translate}}
+    </span>
+    </div>
+  </ng-container>
+
+</ng-template>

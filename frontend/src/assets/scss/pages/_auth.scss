@@ -1,0 +1,17 @@
+.auth-content {
+  max-width: 437px;
+
+
+  .back-login-btn-container {
+    display: flex;
+    align-items: center;
+  }
+
+  a.a-text-link {
+    color: $info;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<img *ngIf="logoType !== 'text'"
+     [ngStyle]="{'height': height}"
+     class="img-fluid"
+     [src]="getLogoTypeUrl()"
+     alt="logo"
+/>
+<div *ngIf="logoType === 'text'" class="nav-logo-text"
+     [ngStyle]="{'height': height}">
+  <div class="w-100 fw-bold fs-5">Tasks</div>
+</div>

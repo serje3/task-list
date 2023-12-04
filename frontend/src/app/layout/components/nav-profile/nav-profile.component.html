@@ -1,0 +1,28 @@
+<dropdown dropdownClass="header-nav-item-select nav-profile" (click)="navProfile.toggle($event)">
+  <div class="toggle-wrapper d-flex align-items-center">
+    <!--        <avatar [size]="35" src="/assets/images/avatars/thumb-1.jpg"></avatar>-->
+    <i class="feather icon-user font-size-xl"></i>
+    <span class="fw-bold mx-1">{{(authService.profile$ | async).username}}
+      {{(authService.isLoggedAs$ | async) ? (translate.admin | translate) : ''}}</span>
+    <i class="feather icon-chevron-down"></i>
+  </div>
+  <dropdown-menu #navProfile alignment="right">
+    <div class="nav-profile-header">
+      <div class="d-flex align-items-center">
+        <!--                <avatar src="/assets/images/avatars/thumb-1.jpg"></avatar>-->
+        <i class="feather icon-user font-size-xl ms-1"></i>
+
+        <div class="d-flex flex-column ms-1">
+          <span class="fw-bold text-dark">{{(authService.profile$ | async).username}}</span>
+          <span class="font-size-sm">{{(authService.profile$ | async).email}}</span>
+        </div>
+      </div>
+    </div>
+    <a routerLink="{{menuItem.path}}" dropdownItem *ngFor="let menuItem of profileMenuList">
+      <div class="d-flex align-items-center gap-2">
+        <i class="font-size-lg" [ngClass]="menuItem.icon"></i>
+        <span>{{menuItem.key | translate}}</span>
+      </div>
+    </a>
+  </dropdown-menu>
+</dropdown>
