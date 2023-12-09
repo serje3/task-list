@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 
 import {AuthRoutingModule} from './auth-routing.module';
 import {LoginComponent} from './login/login.component';
-import {AuthModule as AuModule} from '@app/views/auth/auth.module';
 import {TranslateModule} from '@ngx-translate/core';
 import {CheckboxModule} from '@app/shared/components/checkbox/checkbox.module';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -23,7 +22,6 @@ import {SignupComponent} from "@app/views/tasks/auth/signup/signup.component";
   imports: [
     CommonModule,
     AuthRoutingModule,
-    AuModule,
     TranslateModule,
     CheckboxModule,
     ReactiveFormsModule,

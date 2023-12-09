@@ -3,7 +3,6 @@ import {CommonModule, DatePipe} from '@angular/common';
 
 import {TasksRoutingModule} from './tasks-routing.module';
 import {TranslateModule} from '@ngx-translate/core';
-import {AuthModule} from '@app/views/auth/auth.module';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {SwitchModule} from '@app/shared/components/switch/switch.module';
@@ -21,6 +20,7 @@ import {ClipboardModule} from "@angular/cdk/clipboard";
 import {PageSizeModule} from "@app/shared/components/page-size/page-size.module";
 import { SmallNoteComponent } from './common/components/small-note/small-note.component';
 import { SharedTasksComponent } from './shared-tasks/shared-tasks.component';
+import {AuthModule} from "@app/views/tasks/auth/auth.module";
 
 
 @NgModule({
